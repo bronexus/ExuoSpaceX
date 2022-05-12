@@ -43,6 +43,7 @@ struct LaunchDetailsView: View {
 				
 				wikipediaLink
 			}
+			.overlay(favButton, alignment: .topTrailing)
 			
 			Spacer()
 		}
@@ -100,6 +101,19 @@ extension LaunchDetailsView {
 					.foregroundColor(Color.blue)
 			}
 		}
+	}
+	
+	private var favButton: some View {
+		Image(systemName: vm.favouriteLaunches.contains(launch.id) ? "heart.fill" : "heart")
+			.foregroundColor(Color.accentColor)
+			.padding(.trailing)
+			.onTapGesture {
+				if vm.favouriteLaunches.contains(launch.id) {
+					vm.removeFavouriteLaunch(id: launch.id)
+				} else {
+					vm.addFavouriteLaunch(id: launch.id)
+				}
+			}
 	}
 }
 

@@ -31,39 +31,9 @@ struct LaunchListTileCard: View {
 	
 	var body: some View {
 		VStack {
-			ZStack {
-				if let imageStringURL = imageStringURL {
-					if !usePatch {
-						TImage(try? RemoteImage(stringURL: imageStringURL))
-							.resizable()
-					} else {
-						TImage(try? RemoteImage(stringURL: imageStringURL))
-							.resizable()
-							.scaledToFit()
-							.padding(.top)
-					}
-				} else {
-					Image("spaceXDefaultImage")
-						.resizable()
-				}
-			}
-			.frame(height: (UIDevice.isIPhone ? 220 : 480) / (vm.showFavourites ? 2 : 1))
-			.frame(minWidth: 0, maxWidth: .infinity)
-			.clipped()
+			launchImage
 			
-			HStack {
-				Text("\(launch.name)")
-					.fontWeight(.semibold)
-					.foregroundColor(Color.accentColor)
-					.lineLimit(1)
-					.minimumScaleFactor(0.75)
-				Spacer()
-				Text("\(launch.date_utc.spaceXTime)")
-					.padding(6)
-					.background(Color.accentColor)
-					.clipShape(Capsule())
-			}
-			.padding()
+			launchInfo
 		}
 		.background(
 			RoundedRectangle(cornerRadius: 10)
@@ -74,20 +44,61 @@ struct LaunchListTileCard: View {
 		.onTapGesture {
 			vm.sheetLaunch = launch
 		}
-		.overlay(
-			Image(systemName: vm.favouriteLaunches.contains(launch.id) ? "heart.fill" : "heart")
-				.foregroundColor(Color.accentColor)
-				.padding(12)
-				.background(Circle().fill(.ultraThinMaterial))
-				.padding(18)
-				.onTapGesture {
-					if vm.favouriteLaunches.contains(launch.id) {
-						vm.removeFavouriteLaunch(id: launch.id)
-					} else {
-						vm.addFavouriteLaunch(id: launch.id)
-					}
+		.overlay(tileFavButton, alignment: .topTrailing)
+	}
+}
+
+extension LaunchListTileCard {
+	private var launchImage: some View {
+		ZStack {
+			if let imageStringURL = imageStringURL {
+				if !usePatch {
+					TImage(try? RemoteImage(stringURL: imageStringURL))
+						.resizable()
+				} else {
+					TImage(try? RemoteImage(stringURL: imageStringURL))
+						.resizable()
+						.scaledToFit()
+						.padding(.top)
 				}
-			, alignment: .topTrailing
-		)
+			} else {
+				Image("spaceXDefaultImage")
+					.resizable()
+			}
+		}
+		.frame(height: (UIDevice.isIPhone ? 220 : 480) / (vm.showFavourites ? 2 : 1))
+		.frame(minWidth: 0, maxWidth: .infinity)
+		.clipped()
+	}
+	
+	private var launchInfo: some View {
+		HStack {
+			Text("\(launch.name)")
+				.fontWeight(.semibold)
+				.foregroundColor(Color.accentColor)
+				.lineLimit(1)
+				.minimumScaleFactor(0.75)
+			Spacer()
+			Text("\(launch.date_utc.spaceXTime)")
+				.padding(6)
+				.background(Color.accentColor)
+				.clipShape(Capsule())
+		}
+		.padding()
+	}
+	
+	private var tileFavButton: some View {
+		Image(systemName: vm.favouriteLaunches.contains(launch.id) ? "heart.fill" : "heart")
+			.foregroundColor(Color.accentColor)
+			.padding(12)
+			.background(Circle().fill(.ultraThinMaterial))
+			.padding(18)
+			.onTapGesture {
+				if vm.favouriteLaunches.contains(launch.id) {
+					vm.removeFavouriteLaunch(id: launch.id)
+				} else {
+					vm.addFavouriteLaunch(id: launch.id)
+				}
+			}
 	}
 }
