@@ -14,7 +14,10 @@ class LaunchesViewModel: ObservableObject {
 	@Published var sheetLaunch: Launch? = nil
 	@Published var rocket: Rocket?
 	@Published var favouriteLaunches = [String]() { didSet { saveFavouriteLaunches() } }
+	
+	@Published var showUpcoming = Bool()
 	@Published var showFavourites = Bool()
+	@Published var searchText = String()
 	
 	var launchSubscription: AnyCancellable?
 	
@@ -45,7 +48,7 @@ class LaunchesViewModel: ObservableObject {
 				}
 			}, receiveValue: {
 				[ weak self] returnedLaunches in
-				self?.launches = returnedLaunches.reversed().filter({ !$0.upcoming })
+				self?.launches = returnedLaunches.reversed()//.filter({ !$0.upcoming })
 				self?.launchSubscription?.cancel()
 				self?.loadingError = false
 			})

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LaunchesView: View {
 	@EnvironmentObject var vm: LaunchesViewModel
-	@State var searchText = String()
 	
 	var body: some View {
 		ZStack {
@@ -24,7 +23,9 @@ struct LaunchesView: View {
 			}
 		}
 		.navigationBarTitle("SpaceX Launches", displayMode: .inline)
-		.navigationBarItems(trailing: favouritesToggleButton)
+		.navigationBarItems(
+			leading: upcomingToggleButton,
+			trailing: favouritesToggleButton)
 		.sheet(item: $vm.sheetLaunch, onDismiss: nil) { launch in
 			LaunchDetailsView(launch: launch)
 		}
@@ -48,14 +49,15 @@ extension LaunchesView {
 		List {
 			ForEach(
 				vm.launches
+					.filter({ vm.showUpcoming ? true : !$0.upcoming })
 					.filter({ vm.showFavourites ? vm.favouriteLaunches.contains($0.id) : true })
-					.filter({ searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText) })) { launch in
+					.filter({ vm.searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(vm.searchText) })) { launch in
 						LaunchListTileCard(launch: launch)
 							.listRowSeparator(.hidden)
 					}
 		}
 		.listStyle(PlainListStyle())
-		.searchable(text: $searchText)
+		.searchable(text: $vm.searchText)
 		.refreshable { vm.getLaunches() }
 	}
 	
@@ -92,6 +94,14 @@ extension LaunchesView {
 			vm.showFavourites.toggle()
 		} label: {
 			Image(systemName: vm.showFavourites ? "heart.fill" : "heart")
+		}
+	}
+	
+	private var upcomingToggleButton: some View {
+		Button {
+			vm.showUpcoming.toggle()
+		} label: {
+			Image(systemName: vm.showUpcoming ? "clock.fill" : "clock")
 		}
 	}
 }
