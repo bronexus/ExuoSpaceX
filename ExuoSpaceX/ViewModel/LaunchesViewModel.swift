@@ -14,6 +14,7 @@ class LaunchesViewModel: ObservableObject {
 	@Published var sheetLaunch: Launch? = nil
 	@Published var rocket: Rocket?
 	@Published var favouriteLaunches = [String]() { didSet { saveFavouriteLaunches() } }
+	@Published var showFavourites = Bool()
 	
 	var launchSubscription: AnyCancellable?
 	

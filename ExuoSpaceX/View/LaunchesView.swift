@@ -24,6 +24,7 @@ struct LaunchesView: View {
 			}
 		}
 		.navigationBarTitle("Launches")
+		.navigationBarItems(trailing: favouritesToggleButton)
 		.sheet(item: $vm.sheetLaunch, onDismiss: nil) { launch in
 			LaunchDetailsView(launch: launch)
 		}
@@ -46,6 +47,7 @@ extension LaunchesView {
 		List {
 			ForEach(
 				vm.launches
+					.filter({ vm.showFavourites ? vm.favouriteLaunches.contains($0.id) : true })
 					.filter({ searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText) })) { launch in
 						LaunchListTileCard(launch: launch)
 							.listRowSeparator(.hidden)
@@ -82,6 +84,14 @@ extension LaunchesView {
 			.padding(.top)
 		}
 		.padding()
+	}
+	
+	private var favouritesToggleButton: some View {
+		Button {
+			vm.showFavourites.toggle()
+		} label: {
+			Image(systemName: vm.showFavourites ? "heart.fill" : "heart")
+		}
 	}
 }
 
