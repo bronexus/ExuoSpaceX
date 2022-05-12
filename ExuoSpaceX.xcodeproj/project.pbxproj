@@ -21,6 +21,7 @@
 		742EF677282CE65300BB06EF /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF671282CE65300BB06EF /* Flickr.swift */; };
 		742EF67A282CEB0600BB06EF /* Telescope in Frameworks */ = {isa = PBXBuildFile; productRef = 742EF679282CEB0600BB06EF /* Telescope */; };
 		742EF67D282CEB5C00BB06EF /* LaunchListTileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF67C282CEB5C00BB06EF /* LaunchListTileCard.swift */; };
+		742EF680282CF0F300BB06EF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF67F282CF0F300BB06EF /* Date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		742EF670282CE65300BB06EF /* Launch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		742EF671282CE65300BB06EF /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
 		742EF67C282CEB5C00BB06EF /* LaunchListTileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListTileCard.swift; sourceTree = "<group>"; };
+		742EF67F282CF0F300BB06EF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				742EF662282CE5B200BB06EF /* ViewModel */,
 				742EF669282CE65300BB06EF /* Model */,
 				742EF664282CE5C400BB06EF /* Utilities */,
+				742EF67E282CF0E200BB06EF /* Extensions */,
 				742EF657282CE44200BB06EF /* Assets.xcassets */,
 				742EF659282CE44200BB06EF /* Preview Content */,
 			);
@@ -150,6 +153,14 @@
 				742EF67C282CEB5C00BB06EF /* LaunchListTileCard.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		742EF67E282CF0E200BB06EF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				742EF67F282CF0F300BB06EF /* Date+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +242,7 @@
 				742EF673282CE65300BB06EF /* PayloadWeights.swift in Sources */,
 				742EF676282CE65300BB06EF /* Launch.swift in Sources */,
 				742EF677282CE65300BB06EF /* Flickr.swift in Sources */,
+				742EF680282CF0F300BB06EF /* Date+Ext.swift in Sources */,
 				742EF666282CE5ED00BB06EF /* NetworkingManager.swift in Sources */,
 				742EF668282CE62000BB06EF /* LaunchesViewModel.swift in Sources */,
 				742EF656282CE44100BB06EF /* LaunchesView.swift in Sources */,

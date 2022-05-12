@@ -57,7 +57,7 @@ struct LaunchListTileCard: View {
 					.lineLimit(1)
 					.minimumScaleFactor(0.75)
 				Spacer()
-				Text("\(launch.date_utc)")
+				Text("\(launch.date_utc.spaceXTime)")
 					.padding(6)
 					.background(Color.accentColor)
 					.clipShape(Capsule())
