@@ -26,6 +26,7 @@
 		742EF686282D031800BB06EF /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 742EF685282D031800BB06EF /* YouTubePlayerKit */; };
 		742EF688282D032E00BB06EF /* LaunchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF687282D032E00BB06EF /* LaunchDetailsView.swift */; };
 		742EF68C282D35EC00BB06EF /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF68B282D35EC00BB06EF /* UserDefaults+Ext.swift */; };
+		742EF68E282D3AA500BB06EF /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF68D282D3AA500BB06EF /* UIDevice+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		742EF682282CFC2900BB06EF /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		742EF687282D032E00BB06EF /* LaunchDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailsView.swift; sourceTree = "<group>"; };
 		742EF68B282D35EC00BB06EF /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
+		742EF68D282D3AA500BB06EF /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			children = (
 				742EF67F282CF0F300BB06EF /* Date+Ext.swift */,
 				742EF68B282D35EC00BB06EF /* UserDefaults+Ext.swift */,
+				742EF68D282D3AA500BB06EF /* UIDevice+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				742EF680282CF0F300BB06EF /* Date+Ext.swift in Sources */,
 				742EF666282CE5ED00BB06EF /* NetworkingManager.swift in Sources */,
 				742EF668282CE62000BB06EF /* LaunchesViewModel.swift in Sources */,
+				742EF68E282D3AA500BB06EF /* UIDevice+Ext.swift in Sources */,
 				742EF656282CE44100BB06EF /* LaunchesView.swift in Sources */,
 				742EF68C282D35EC00BB06EF /* UserDefaults+Ext.swift in Sources */,
 				742EF674282CE65300BB06EF /* Links.swift in Sources */,

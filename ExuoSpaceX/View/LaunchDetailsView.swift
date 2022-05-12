@@ -39,7 +39,7 @@ struct LaunchDetailsView: View {
 				
 				Text("Rocket Name: \(vm.rocket?.name ?? "unknown")")
 				
-				Text("Rocket Mass: \(vm.rocket?.payload_weights?.first?.kg ?? 00) kg")
+				Text("Payload Mass: \(vm.rocket?.payload_weights?.first?.kg ?? 0) kg")
 				
 				wikipediaLink
 			}

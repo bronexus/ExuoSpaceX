@@ -23,7 +23,7 @@ struct LaunchesView: View {
 				}
 			}
 		}
-		.navigationBarTitle("Launches")
+		.navigationBarTitle("SpaceX Launches", displayMode: .inline)
 		.navigationBarItems(trailing: favouritesToggleButton)
 		.sheet(item: $vm.sheetLaunch, onDismiss: nil) { launch in
 			LaunchDetailsView(launch: launch)
@@ -37,6 +37,7 @@ struct LaunchesView_Previews: PreviewProvider {
 		NavigationView {
 			LaunchesView()
 		}
+		.previewDevice("iPhone X")
 		.environmentObject(LaunchesViewModel())
 	}
 }

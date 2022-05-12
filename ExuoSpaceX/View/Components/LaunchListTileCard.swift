@@ -47,7 +47,7 @@ struct LaunchListTileCard: View {
 						.resizable()
 				}
 			}
-			.frame(height: 220)
+			.frame(height: (UIDevice.isIPhone ? 220 : 480) / (vm.showFavourites ? 2 : 1))
 			.frame(minWidth: 0, maxWidth: .infinity)
 			.clipped()
 			
