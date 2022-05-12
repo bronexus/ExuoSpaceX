@@ -84,4 +84,16 @@ extension LaunchesViewModel {
 			UserDefaults.standard.set(encodedData, forKey: UserDefaults.Keys.favouriteLaunches)
 		}
 	}
+	
+	func isFav(launchId: String) -> Bool {
+		return favouriteLaunches.contains(launchId)
+	}
+	
+	func favTapped(launchId: String) {
+		if favouriteLaunches.contains(launchId) {
+			removeFavouriteLaunch(id: launchId)
+		} else {
+			addFavouriteLaunch(id: launchId)
+		}
+	}
 }

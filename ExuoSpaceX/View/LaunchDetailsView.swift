@@ -56,8 +56,8 @@ struct LaunchDetailsView: View {
 extension LaunchDetailsView {
 	private var youtube: some View {
 		ZStack {
-			if youtubePlayer != nil {
-				YouTubePlayerView(youtubePlayer!)
+			if let youtubePlayer = youtubePlayer {
+				YouTubePlayerView(youtubePlayer)
 					.scaledToFit()
 					.frame(maxWidth: .infinity)
 					.background(Color.black)
@@ -104,15 +104,11 @@ extension LaunchDetailsView {
 	}
 	
 	private var favButton: some View {
-		Image(systemName: vm.favouriteLaunches.contains(launch.id) ? "heart.fill" : "heart")
+		Image(systemName: vm.isFav(launchId: launch.id) ? "heart.fill" : "heart")
 			.foregroundColor(Color.accentColor)
 			.padding(.trailing)
 			.onTapGesture {
-				if vm.favouriteLaunches.contains(launch.id) {
-					vm.removeFavouriteLaunch(id: launch.id)
-				} else {
-					vm.addFavouriteLaunch(id: launch.id)
-				}
+				vm.favTapped(launchId: launch.id)
 			}
 	}
 }

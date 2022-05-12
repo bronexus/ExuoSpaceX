@@ -88,17 +88,13 @@ extension LaunchListTileCard {
 	}
 	
 	private var tileFavButton: some View {
-		Image(systemName: vm.favouriteLaunches.contains(launch.id) ? "heart.fill" : "heart")
+		Image(systemName: vm.isFav(launchId: launch.id) ? "heart.fill" : "heart")
 			.foregroundColor(Color.accentColor)
 			.padding(12)
 			.background(Circle().fill(.ultraThinMaterial))
 			.padding(18)
 			.onTapGesture {
-				if vm.favouriteLaunches.contains(launch.id) {
-					vm.removeFavouriteLaunch(id: launch.id)
-				} else {
-					vm.addFavouriteLaunch(id: launch.id)
-				}
+				vm.favTapped(launchId: launch.id)
 			}
 	}
 }
