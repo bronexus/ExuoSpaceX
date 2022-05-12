@@ -30,7 +30,7 @@ struct LaunchListTileCard: View {
 	}
 	
 	var body: some View {
-		VStack {
+		ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
 			launchImage
 			
 			launchInfo
@@ -59,7 +59,8 @@ extension LaunchListTileCard {
 					TImage(try? RemoteImage(stringURL: imageStringURL))
 						.resizable()
 						.scaledToFit()
-						.padding(.top)
+						.padding(.vertical, 12)
+						.padding(.bottom, 64)
 				}
 			} else {
 				Image("spaceXDefaultImage")
@@ -85,6 +86,7 @@ extension LaunchListTileCard {
 				.clipShape(Capsule())
 		}
 		.padding()
+		.background(RoundedRectangle(cornerRadius: 10).fill(.ultraThinMaterial))
 	}
 	
 	private var tileFavButton: some View {
