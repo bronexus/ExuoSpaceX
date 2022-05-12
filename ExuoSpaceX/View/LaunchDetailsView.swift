@@ -58,9 +58,9 @@ struct LaunchDetailsView: View {
 					.padding(.horizontal)
 				
 				Group {
-					Text("Rocket Name:")
+					Text("Rocket Name: \(rocketName)")
 					
-					Text("Rocket Mass:")
+					Text("Rocket Mass: \(rocketPayloadMass) kg")
 				}
 				.foregroundColor(Color.accentColor)
 				
@@ -72,5 +72,28 @@ struct LaunchDetailsView: View {
 			
 			Spacer()
 		}
+		.onAppear {
+			fetchRocket(rocketId: launch.rocket) { rocket in
+				rocketName = rocket.name ?? "Unkown Name"
+				rocketPayloadMass = "\(rocket.payload_weights?.first?.kg ?? 00000000000)"
+			}
+		}
+	}
+	
+	func fetchRocket(rocketId: String, callback: @escaping (Rocket) -> ()) {
+		guard let url = URL(string: "https://api.spacexdata.com/v4/rockets/\(rocketId)") else { return }
+		URLSession.shared.dataTask(with: url) { (data, resp, err) in
+			
+			DispatchQueue.main.async {
+				guard let data = data else { return }
+				do {
+					let rocket = try JSONDecoder().decode(Rocket.self, from: data)
+					callback(rocket)
+				} catch {
+					print("Failed to decode JSON:", error)
+				}
+			}
+			
+		}.resume()
 	}
 }
