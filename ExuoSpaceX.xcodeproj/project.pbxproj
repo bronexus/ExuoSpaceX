@@ -23,6 +23,8 @@
 		742EF67D282CEB5C00BB06EF /* LaunchListTileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF67C282CEB5C00BB06EF /* LaunchListTileCard.swift */; };
 		742EF680282CF0F300BB06EF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF67F282CF0F300BB06EF /* Date+Ext.swift */; };
 		742EF683282CFC2900BB06EF /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF682282CFC2900BB06EF /* CustomButtons.swift */; };
+		742EF686282D031800BB06EF /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 742EF685282D031800BB06EF /* YouTubePlayerKit */; };
+		742EF688282D032E00BB06EF /* LaunchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF687282D032E00BB06EF /* LaunchDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,7 @@
 		742EF67C282CEB5C00BB06EF /* LaunchListTileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListTileCard.swift; sourceTree = "<group>"; };
 		742EF67F282CF0F300BB06EF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		742EF682282CFC2900BB06EF /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
+		742EF687282D032E00BB06EF /* LaunchDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742EF686282D031800BB06EF /* YouTubePlayerKit in Frameworks */,
 				742EF67A282CEB0600BB06EF /* Telescope in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				742EF655282CE44100BB06EF /* LaunchesView.swift */,
+				742EF687282D032E00BB06EF /* LaunchDetailsView.swift */,
 				742EF67B282CEB4000BB06EF /* Components */,
 			);
 			path = View;
@@ -192,6 +197,7 @@
 			name = ExuoSpaceX;
 			packageProductDependencies = (
 				742EF679282CEB0600BB06EF /* Telescope */,
+				742EF685282D031800BB06EF /* YouTubePlayerKit */,
 			);
 			productName = ExuoSpaceX;
 			productReference = 742EF650282CE44100BB06EF /* ExuoSpaceX.app */;
@@ -223,6 +229,7 @@
 			mainGroup = 742EF647282CE44100BB06EF;
 			packageReferences = (
 				742EF678282CEB0600BB06EF /* XCRemoteSwiftPackageReference "telescope" */,
+				742EF684282D031800BB06EF /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
 			);
 			productRefGroup = 742EF651282CE44100BB06EF /* Products */;
 			projectDirPath = "";
@@ -252,6 +259,7 @@
 			files = (
 				742EF673282CE65300BB06EF /* PayloadWeights.swift in Sources */,
 				742EF676282CE65300BB06EF /* Launch.swift in Sources */,
+				742EF688282D032E00BB06EF /* LaunchDetailsView.swift in Sources */,
 				742EF677282CE65300BB06EF /* Flickr.swift in Sources */,
 				742EF680282CF0F300BB06EF /* Date+Ext.swift in Sources */,
 				742EF666282CE5ED00BB06EF /* NetworkingManager.swift in Sources */,
@@ -475,6 +483,14 @@
 				kind = branch;
 			};
 		};
+		742EF684282D031800BB06EF /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -482,6 +498,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 742EF678282CEB0600BB06EF /* XCRemoteSwiftPackageReference "telescope" */;
 			productName = Telescope;
+		};
+		742EF685282D031800BB06EF /* YouTubePlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 742EF684282D031800BB06EF /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
+			productName = YouTubePlayerKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

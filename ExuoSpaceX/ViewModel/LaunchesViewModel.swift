@@ -11,6 +11,7 @@ import Combine
 class LaunchesViewModel: ObservableObject {
 	@Published var launches = [Launch]()
 	@Published var loadingError = Bool()
+	@Published var sheetLaunch: Launch? = nil
 	
 	var launchSubscription: AnyCancellable?
 	

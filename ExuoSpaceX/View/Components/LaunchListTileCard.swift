@@ -9,6 +9,7 @@ import SwiftUI
 import Telescope
 
 struct LaunchListTileCard: View {
+	@EnvironmentObject var vm: LaunchesViewModel
 	var launch: Launch
 	var imageStringURL: String?
 	var usePatch = Bool()
@@ -70,5 +71,8 @@ struct LaunchListTileCard: View {
 		)
 		.cornerRadius(10)
 		.clipped()
+		.onTapGesture {
+			vm.sheetLaunch = launch
+		}
 	}
 }

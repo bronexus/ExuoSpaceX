@@ -24,6 +24,9 @@ struct LaunchesView: View {
 			}
 		}
 		.navigationBarTitle("Launches")
+		.sheet(item: $vm.sheetLaunch, onDismiss: nil) { launch in
+			LaunchDetailsView(launch: launch)
+		}
 	}
 }
 
@@ -43,7 +46,7 @@ extension LaunchesView {
 		List {
 			ForEach(
 				vm.launches
-					.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { launch in
+					.filter({ searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText) })) { launch in
 						LaunchListTileCard(launch: launch)
 							.listRowSeparator(.hidden)
 					}
