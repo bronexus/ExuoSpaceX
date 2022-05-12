@@ -74,5 +74,20 @@ struct LaunchListTileCard: View {
 		.onTapGesture {
 			vm.sheetLaunch = launch
 		}
+		.overlay(
+			Image(systemName: vm.favouriteLaunches.contains(launch.id) ? "heart.fill" : "heart")
+				.foregroundColor(Color.accentColor)
+				.padding(12)
+				.background(Circle().fill(.ultraThinMaterial))
+				.padding(18)
+				.onTapGesture {
+					if vm.favouriteLaunches.contains(launch.id) {
+						vm.removeFavouriteLaunch(id: launch.id)
+					} else {
+						vm.addFavouriteLaunch(id: launch.id)
+					}
+				}
+			, alignment: .topTrailing
+		)
 	}
 }

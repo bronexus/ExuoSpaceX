@@ -13,6 +13,7 @@ class LaunchesViewModel: ObservableObject {
 	@Published var loadingError = Bool()
 	@Published var sheetLaunch: Launch? = nil
 	@Published var rocket: Rocket?
+	@Published var favouriteLaunches = [String]() { didSet { saveFavouriteLaunches() } }
 	
 	var launchSubscription: AnyCancellable?
 	
@@ -22,6 +23,7 @@ class LaunchesViewModel: ObservableObject {
 	
 	init() {
 		getLaunches()
+		getFavouriteLaunches()
 	}
 	
 	func getLaunches() {
@@ -56,5 +58,29 @@ class LaunchesViewModel: ObservableObject {
 			.sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedRocket in
 				self?.rocket = returnedRocket
 			})
+	}
+}
+
+extension LaunchesViewModel {
+	func getFavouriteLaunches() {
+		guard
+			let data = UserDefaults.standard.data(forKey: UserDefaults.Keys.favouriteLaunches),
+			let savedLaunches = try? JSONDecoder().decode([String].self, from: data)
+		else { return }
+		self.favouriteLaunches = savedLaunches
+	}
+	
+	func addFavouriteLaunch(id: String) {
+		favouriteLaunches.append(id)
+	}
+	
+	func removeFavouriteLaunch(id: String) {
+		favouriteLaunches.removeAll { $0 == id }
+	}
+	
+	func saveFavouriteLaunches() {
+		if let encodedData = try? JSONEncoder().encode(favouriteLaunches) {
+			UserDefaults.standard.set(encodedData, forKey: UserDefaults.Keys.favouriteLaunches)
+		}
 	}
 }
