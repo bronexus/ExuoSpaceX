@@ -15,6 +15,12 @@ struct LaunchesView: View {
 		ZStack {
 			if vm.isLoaded {
 				launchesList
+			} else {
+				if vm.loadingError {
+					loadingError
+				} else {
+					loading
+				}
 			}
 		}
 		.navigationBarTitle("Launches")
@@ -45,6 +51,34 @@ extension LaunchesView {
 		.listStyle(PlainListStyle())
 		.searchable(text: $searchText)
 		.refreshable { vm.getLaunches() }
+	}
+	
+	private var loading: some View {
+		HStack(spacing: 12.0) {
+			ProgressView()
+			Text("Loading")
+				.font(.callout)
+				.fontWeight(.light)
+				.foregroundColor(Color.secondary)
+		}
+	}
+	
+	private var loadingError: some View {
+		VStack(spacing: 16) {
+			Text("Loading error 😵‍💫")
+				.font(.title)
+			Text("Please check your connection and try again.")
+				.foregroundColor(Color.secondary)
+				.font(.subheadline)
+			Button {
+				vm.getLaunches()
+			} label: {
+				Text("Retry")
+			}
+			.buttonStyle(CapsuleButtonStyle())
+			.padding(.top)
+		}
+		.padding()
 	}
 }
 

@@ -22,6 +22,7 @@
 		742EF67A282CEB0600BB06EF /* Telescope in Frameworks */ = {isa = PBXBuildFile; productRef = 742EF679282CEB0600BB06EF /* Telescope */; };
 		742EF67D282CEB5C00BB06EF /* LaunchListTileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF67C282CEB5C00BB06EF /* LaunchListTileCard.swift */; };
 		742EF680282CF0F300BB06EF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF67F282CF0F300BB06EF /* Date+Ext.swift */; };
+		742EF683282CFC2900BB06EF /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF682282CFC2900BB06EF /* CustomButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		742EF671282CE65300BB06EF /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
 		742EF67C282CEB5C00BB06EF /* LaunchListTileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListTileCard.swift; sourceTree = "<group>"; };
 		742EF67F282CF0F300BB06EF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		742EF682282CFC2900BB06EF /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				742EF669282CE65300BB06EF /* Model */,
 				742EF664282CE5C400BB06EF /* Utilities */,
 				742EF67E282CF0E200BB06EF /* Extensions */,
+				742EF681282CFC1B00BB06EF /* Custom */,
 				742EF657282CE44200BB06EF /* Assets.xcassets */,
 				742EF659282CE44200BB06EF /* Preview Content */,
 			);
@@ -161,6 +164,14 @@
 				742EF67F282CF0F300BB06EF /* Date+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		742EF681282CFC1B00BB06EF /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				742EF682282CFC2900BB06EF /* CustomButtons.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +260,7 @@
 				742EF674282CE65300BB06EF /* Links.swift in Sources */,
 				742EF672282CE65300BB06EF /* Rocket.swift in Sources */,
 				742EF675282CE65300BB06EF /* Patch.swift in Sources */,
+				742EF683282CFC2900BB06EF /* CustomButtons.swift in Sources */,
 				742EF67D282CEB5C00BB06EF /* LaunchListTileCard.swift in Sources */,
 				742EF654282CE44100BB06EF /* ExuoSpaceXApp.swift in Sources */,
 			);
