@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct ExuoSpaceXApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+	@StateObject private var vm = LaunchesViewModel()
+	
+	var body: some Scene {
+		WindowGroup {
+			NavigationView {
+				LaunchesView()
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+			.environmentObject(vm)
+		}
+	}
 }
