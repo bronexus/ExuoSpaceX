@@ -37,12 +37,9 @@ struct LaunchDetailsView: View {
 				
 				fancyLaunchDetails
 				
-				Group {
-					Text("Rocket Name: \(vm.rocket?.name ?? "unknown")")
-					
-					Text("Rocket Mass: \(vm.rocket?.payload_weights?.first?.kg ?? 00) kg")
-				}
-				.foregroundColor(Color.accentColor)
+				Text("Rocket Name: \(vm.rocket?.name ?? "unknown")")
+				
+				Text("Rocket Mass: \(vm.rocket?.payload_weights?.first?.kg ?? 00) kg")
 				
 				wikipediaLink
 			}
@@ -78,6 +75,7 @@ extension LaunchDetailsView {
 						.fontWeight(.light)
 						.lineLimit(nil)
 						.multilineTextAlignment(.center)
+						.padding(.trailing, 16)
 				}
 			} else {
 				Text("🚀 Details not available 🫣")
@@ -86,6 +84,7 @@ extension LaunchDetailsView {
 			}
 		}
 		.padding()
+		.padding(.trailing, -16)
 		.frame(maxWidth: .infinity, minHeight: 92)
 		.background(
 			RoundedRectangle(cornerRadius: 10)
