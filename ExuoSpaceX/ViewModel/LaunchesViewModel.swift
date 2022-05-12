@@ -12,6 +12,7 @@ class LaunchesViewModel: ObservableObject {
 	@Published var launches = [Launch]()
 	@Published var loadingError = Bool()
 	@Published var sheetLaunch: Launch? = nil
+	@Published var rocket: Rocket?
 	
 	var launchSubscription: AnyCancellable?
 	
@@ -44,6 +45,16 @@ class LaunchesViewModel: ObservableObject {
 				self?.launches = returnedLaunches.reversed().filter({ !$0.upcoming })
 				self?.launchSubscription?.cancel()
 				self?.loadingError = false
+			})
+	}
+	
+	func getRocket(rocketId: String) {
+		guard let url = URL(string: "https://api.spacexdata.com/v4/rockets/\(rocketId)") else { return }
+		
+		launchSubscription = NetworkingManager.download(url: url)
+			.decode(type: Rocket.self, decoder: JSONDecoder())
+			.sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedRocket in
+				self?.rocket = returnedRocket
 			})
 	}
 }
