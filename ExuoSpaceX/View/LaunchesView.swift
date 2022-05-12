@@ -26,9 +26,15 @@ struct LaunchesView: View {
 		.navigationBarItems(
 			leading: upcomingToggleButton,
 			trailing: favouritesToggleButton)
-		.sheet(item: $vm.sheetLaunch, onDismiss: nil) { launch in
+//		.sheet(item: $vm.sheetLaunch, onDismiss: nil) { launch in
+//			LaunchDetailsView(launch: launch)
+//		}
+		.sheet(item: $vm.sheetLaunch) {
+			vm.rocket = nil
+		} content: { launch in
 			LaunchDetailsView(launch: launch)
 		}
+
 	}
 }
 
@@ -75,7 +81,7 @@ extension LaunchesView {
 		VStack(spacing: 16) {
 			Text("Loading error 😵‍💫")
 				.font(.title)
-			Text("Please check your connection and try again.")
+			Text("Please check your connection and try again")
 				.foregroundColor(Color.secondary)
 				.font(.subheadline)
 			Button {

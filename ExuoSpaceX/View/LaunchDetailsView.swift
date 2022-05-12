@@ -59,12 +59,21 @@ extension LaunchDetailsView {
 			if let youtubePlayer = youtubePlayer {
 				YouTubePlayerView(youtubePlayer)
 					.scaledToFit()
-					.frame(maxWidth: .infinity)
-					.background(Color.black)
 			} else {
-				Spacer()
+				VStack {
+					Text("Oh snap 😶‍🌫️")
+						.padding(.bottom, 8)
+					
+					Text("There was a problem loading YouTube video\nPlease try again later")
+						.font(.footnote)
+						.multilineTextAlignment(.center)
+				}
+				.foregroundColor(Color.white)
+				.padding(.vertical, 80)
 			}
 		}
+		.frame(maxWidth: .infinity)
+		.background(Color.black)
 	}
 	
 	private var fancyLaunchDetails: some View {

@@ -46,8 +46,7 @@ class LaunchesViewModel: ObservableObject {
 					self.loadingError = true
 					print(error.localizedDescription)
 				}
-			}, receiveValue: {
-				[ weak self] returnedLaunches in
+			}, receiveValue: { [ weak self] returnedLaunches in
 				self?.launches = returnedLaunches.reversed()//.filter({ !$0.upcoming })
 				self?.launchSubscription?.cancel()
 				self?.loadingError = false
@@ -59,8 +58,21 @@ class LaunchesViewModel: ObservableObject {
 		
 		launchSubscription = NetworkingManager.download(url: url)
 			.decode(type: Rocket.self, decoder: JSONDecoder())
-			.sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedRocket in
+//			.sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedRocket in
+//				self?.rocket = returnedRocket
+//				self?.launchSubscription?.cancel()
+//			})
+			.sink(receiveCompletion: { completion in
+				switch completion {
+				case .finished: break
+				case .failure(let error):
+					self.loadingError = true
+					print(error.localizedDescription)
+				}
+			}, receiveValue: { [ weak self] returnedRocket in
 				self?.rocket = returnedRocket
+				self?.launchSubscription?.cancel()
+				self?.loadingError = false
 			})
 	}
 }
