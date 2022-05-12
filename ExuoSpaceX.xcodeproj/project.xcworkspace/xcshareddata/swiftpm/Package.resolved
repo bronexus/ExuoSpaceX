@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "telescope",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/persello/telescope.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f408b75c8e671dced14dbf32cd2b4b791225af5a"
+      }
+    }
+  ],
+  "version" : 2
+}

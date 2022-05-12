@@ -14,15 +14,7 @@ struct LaunchesView: View {
 	var body: some View {
 		ZStack {
 			if vm.isLoaded {
-				List {
-					ForEach(vm.launches.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { launch in
-						Text(launch.name)
-							.listRowSeparator(.hidden)
-					}
-				}
-				.listStyle(PlainListStyle())
-				.searchable(text: $searchText)
-				.refreshable { vm.getLaunches() }
+				launchesList
 			}
 		}
 		.navigationBarTitle("Launches")
@@ -39,4 +31,20 @@ struct LaunchesView_Previews: PreviewProvider {
 	}
 }
 #endif
+
+extension LaunchesView {
+	private var launchesList: some View {
+		List {
+			ForEach(
+				vm.launches
+					.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { launch in
+						LaunchListTileCard(launch: launch)
+							.listRowSeparator(.hidden)
+					}
+		}
+		.listStyle(PlainListStyle())
+		.searchable(text: $searchText)
+		.refreshable { vm.getLaunches() }
+	}
+}
 
